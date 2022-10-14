@@ -15,8 +15,9 @@ function getSeason(date) {
 
     if (isNaN(date)) return 'Unable to determine the time of year!';
 
-    if ( !(new Date(date).toString()) ) throw new Error('Invalid date!');
-
+    // if ( !(date instanceof Date) || (Object.prototype.toString.call(new Date(date)) !== "[object Date]")  ) throw new Error("Invalid date!");
+    // if ( !date.hasOwnProperty() ) throw new Error("Invalid date!");
+    // if ( Object.hasOwn(date instanceof Date) )  throw new Error("Invalid date!");
 // === 'Invalid Date'
 
     let month = date.getMonth();
