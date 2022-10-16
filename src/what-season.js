@@ -13,12 +13,22 @@ const {NotImplementedError} = require('../extensions/index.js');
  */
 function getSeason(date) {
 
-    if (isNaN(date)) return 'Unable to determine the time of year!';
+    if ( arguments.length !== 1 ) return 'Unable to determine the time of year!';
 
-    // if ( !(date instanceof Date) || (Object.prototype.toString.call(new Date(date)) !== "[object Date]")  ) throw new Error("Invalid date!");
-    // if ( !date.hasOwnProperty() ) throw new Error("Invalid date!");
-    // if ( Object.hasOwn(date instanceof Date) )  throw new Error("Invalid date!");
-// === 'Invalid Date'
+    if ( isNaN(Date.parse(date)) ) {
+        throw new Error('Invalid date!')
+    }
+
+    if (  Object.getOwnPropertyNames(date).length > 1 ) {
+        throw new Error('Invalid date!')
+    }
+
+    try {
+        date.getMonth()
+    } catch (error) {
+        throw new Error('Invalid date!')
+    }
+
 
     let month = date.getMonth();
     if (month >= 2 && month < 5) return 'spring';
